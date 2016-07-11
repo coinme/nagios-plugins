@@ -4,7 +4,7 @@ if [ ! -f $tmp/LastDataOut.txt ]; then
 	echo "0" > $tmp/LastDataOut.txt
 fi
 
-CurrentDataOut=$(($(cat /proc/net/dev  | grep eth | awk '{print $2+$10}')))
+CurrentDataOut="$(cat /proc/net/dev  | grep eth[10] | awk '{print $2+$10}')"
 
 LastDataOut="$(cat $tmp/LastDataOut.txt)"
 DataOut=$(($CurrentDataOut - $LastDataOut))
